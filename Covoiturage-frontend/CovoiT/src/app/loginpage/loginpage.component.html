@@ -1,0 +1,51 @@
+<body>
+    <div class="formContainer cardContainer">
+        <div class="card flex justify-content-center">
+            <p-card class="card" [style]="{ width: '90%'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                </ng-template>
+
+                <div class="card flex justify-content-center">
+                    <h2 class="title">S'identifier</h2>
+                </div>
+                <form (ngSubmit)="onSubmit()">
+                    <div class="card flex justify-content-center">
+                        <input type="text" class="inputs" placeholder="E-mail" pInputText id="username"
+                            [(ngModel)]="email" name="email" />
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <div class="pass">
+                            <p-password [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                                inputStyleClass="w-full"
+                                styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right"
+                                placeholder="Mot de Passe" id="password" [toggleMask]="true" [feedback]="false"
+                                [(ngModel)]="password" name="password"></p-password>
+                        </div>
+                    </div>
+
+
+                    <div class="card button flex justify-content-center">
+                        <p-button label="Login" icon="pi pi-check" type="submit"></p-button>
+                    </div>
+
+
+                    <br >
+                <!-- Bootstrap grid for horizontal alignment -->
+                <div class="row horizontal-links">
+                  <div class="col">
+                      <a href="/register">S'inscrire</a>
+                  </div>
+                  <div class="col">
+                      <a href="/password-edit-page">Mot de Passe Oublié?</a>
+                  </div>
+              </div>
+                </form>
+
+
+
+            </p-card>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,120 @@
+<body>
+    <div class="formContainer cardContainer">
+        <div class="card flex justify-content-center">
+            <p-card class="card" [style]="{ width: '90%'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                </ng-template>
+
+                <div class="card flex justify-content-center">
+                    <h2 class="title">S'inscrire</h2>
+                </div>
+                <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                    <div class="card flex justify-content-center">
+                        <input name="name" type="text" class="inputs" placeholder="Nom" pInputText id="name"
+                            formControlName="name" />
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <input name="firstname" type="text" class="inputs" placeholder="Prénom" pInputText
+                            id="firstname" formControlName="firstname" />
+                    </div>
+
+                    <!-- <div class="card flex justify-content-center">
+                        <input name="profile_pic" type="file" accept=".jpg,.png,.jpeg" class="inputs"
+                            formControlName="profile_pic" (input)="fileChoosen($event)" />
+
+                    </div> -->
+
+
+                    <div class="card flex justify-content-center">
+                        <p-calendar name="birthdate" class="inputs" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" placeholder="Date de naissance" id="birthdate" [showIcon]="true"
+                            formControlName="birthdate"></p-calendar>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <input name="phone" pInputText pKeyFilter="int" type="number" class="inputs"
+                            [style]="{'width':'80%'}" formControlName="phone" placeholder="Numéro de Téléphone" id="phone" />
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <input name="email" type="text" formControlName="email" class="inputs" placeholder="E-mail"
+                            pInputText id="email" />
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <div class="pass ">
+                            <p-password formControlName="password" name="password" id="password"
+                                [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" placeholder="Mot de passe"
+                                [toggleMask]="true">
+                                <ng-template pTemplate="header">
+                                    <h6>Choisir un mot de passe</h6>
+                                </ng-template>
+                                <ng-template pTemplate="footer">
+                                    <p-divider></p-divider>
+                                    <p class="mt-2">Suggestions</p>
+                                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                        <li>Au moins une minuscule</li>
+                                        <li>Au moins une majuscule</li>
+                                        <li>Au moins un chiffre</li>
+                                        <li>Minimum 8 caractères</li>
+                                    </ul>
+                                </ng-template>
+                            </p-password>
+                        </div>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <div class="pass ">
+                            <p-password [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                                placeholder="Confirmer Mot de passe" formControlName='passwordConfirmation'
+                                [toggleMask]="true" [feedback]="false"></p-password>
+                        </div>
+                    </div>
+
+                    <div class="options card flex justify-content-center">
+                        <mat-icon class="icons">pets</mat-icon>
+                        <p-selectButton formControlName="pref_animals" name="pref_animals" id="pref_animals"
+                            [options]="Options">
+                            <ng-template let-item>
+                                <mat-icon>{{item.icon}}</mat-icon>
+                            </ng-template>
+                        </p-selectButton>
+                    </div>
+
+                    <div class="options card flex justify-content-center">
+                        <mat-icon class="icons">record_voice_over</mat-icon>
+                        <p-selectButton formControlName="pref_talk" name="pref_talk" id="pref_talk" [options]="Options">
+                            <ng-template let-item>
+                                <mat-icon>{{item.icon}}</mat-icon>
+                            </ng-template>
+                        </p-selectButton>
+                    </div>
+
+                    <div class="options card flex justify-content-center">
+                        <mat-icon class="icons">smoking_rooms</mat-icon>
+                        <p-selectButton formControlName="pref_smoking" name="pref_smoking" id="pref_smoking"
+                            [options]="Options">
+                            <ng-template let-item>
+                                <mat-icon>{{item.icon}}</mat-icon>
+                            </ng-template>
+                        </p-selectButton>
+                    </div>
+                    <br >
+                    <!-- Add a link for login -->
+                    <div class="card flex justify-content-center">
+                      <p>
+
+                              Vous avez déjà un compte? <a href="/login">S'identifier</a>
+                      </p>
+                  </div>
+
+                    <div class="card button flex justify-content-center">
+                        <p-button label="Create Account" icon="pi pi-check" type="submit"></p-button>
+                    </div>
+                </form>
+            </p-card>
+        </div>
+    </div>
+</body>

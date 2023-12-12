@@ -1,0 +1,53 @@
+<app-navbar-component></app-navbar-component>
+
+<body>
+    <div class="searchBar card">
+        <form [formGroup]="searchForm" (ngSubmit)="searchTrips()">
+            <div class="searchArea">
+                <!-- <input [(ngModel)]="departure" name="departure" class="cityInput" pInputText placeholder="Départ" />
+    -->
+                <p-autoComplete formControlName="departure" class="inputs" placeholder="Ville de départ"
+                    [style]="{width:'100%'}" name="departure" class="cityInput"
+                    [inputStyle]="{'width':'100%', 'font-size' : '1.2em', 'font-weight': '500', 'border-radius': '1.2em'}"
+                    [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)"></p-autoComplete>
+
+                <p-autoComplete class="inputs" formControlName="arrival" placeholder="Destination"
+                    [style]="{width:'100%'}"
+                    [inputStyle]="{'width': '100%', 'font-size' : '1.2em', 'font-weight': '500', 'border-radius': '1.2em'}"
+                    name="arrival" class="cityInput" [suggestions]="filteredCountries"
+                    (completeMethod)="filterCountry($event)"></p-autoComplete>
+
+                <p-calendar formControlName="date" name="date" class="dateInput" placeholder="Date"
+                    [showIcon]="true"></p-calendar>
+                <div class="flex-auto">
+                    <p-inputNumber formControlName="seats" name="seats" class="inputPassenger"
+                        [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [showButtons]="true"
+                        buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1" [min]="1"
+                        [max]="8" decrementButtonClass="p-button-info" incrementButtonClass="p-button-info"
+                        incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+                </div>
+                <p-button class="searchButton" type="submit" icon="pi pi-search"
+                    styleClass="p-button-rounded p-button-success">
+                </p-button>
+            </div>
+        </form>
+    </div>
+
+    <div class="cardsContainer" *ngIf="trips.length > 0">
+        <p-card [style]="{background: '#fafafa', 'border-radius': '2em'}" header="Résultat">
+            <div *ngFor="let trip of trips">
+                <div class="trip">
+                    <a [routerLink]="['/trip', trip._id]" class="trip-link" style="text-decoration: none;">
+                        <p-card [style]="{ width: '100%', 'border-radius': '2em'}" header="{{ trip.departure}} - {{trip.arrival}}"
+                            subheader="{{ trip.date }}">
+                            <p class="information">Date: {{ trip.date | date }}</p>
+                            <p class="information">Prix: {{ trip.price }} TND</p>
+                            <p class="information">Places: {{ trip.seats }}</p>
+                        </p-card>
+                    </a>
+                </div>
+            </div>
+        </p-card>
+    </div>
+
+</body>

@@ -1,0 +1,89 @@
+<app-navbar-component></app-navbar-component>
+
+<body>
+    <div class="formContainer cardContainer">
+        <div class="card flex justify-content-center">
+            <p-card class="card cardPublish" [style]="{ width: '40%'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" class="photo" src="https://i.ibb.co/J7pzJM7/pexels-tobi-620335.jpg" />
+                </ng-template>
+
+                <div class="card flex justify-content-center">
+                    <h2 class="title">Publier un Trajet</h2>
+                </div>
+                <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+                    <div class="card flex justify-content-center">
+                        <p-autoComplete class="inputs" placeholder="Ville de départ" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" formControlName="departure" [suggestions]="filteredCountries"
+                            (completeMethod)="filterCountry($event)"></p-autoComplete>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <p-autoComplete class="inputs" placeholder="Ville d'arrivée" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" formControlName="arrival" [suggestions]="filteredCountries"
+                            (completeMethod)="filterCountry($event)"></p-autoComplete>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <h4 class="subTitle">Date et heure de départ</h4>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <p-calendar name="birthdate" class="inputs" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" placeholder="Date et heure de départ" id="departureDate"
+                            formControlName="date" [showTime]="true" [showSeconds]="false"
+                            [showIcon]="true"></p-calendar>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <h4 class="subTitle">Nombre de places disponibles</h4>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <p-inputNumber name="seats" class="inputPassenger" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" [showButtons]="true" buttonLayout="horizontal"
+                            inputId="horizontal" spinnerMode="horizontal" [step]="1" [min]="1" [max]="8"
+                            decrementButtonClass="p-button-info" placeholder="1" incrementButtonClass="p-button-info"
+                            formControlName="seats" incrementButtonIcon="pi pi-plus"
+                            decrementButtonIcon="pi pi-minus"></p-inputNumber>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <h4 class="subTitle">Tarifs</h4>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <p-inputNumber [showButtons]="true" [step]="1" [min]="1" [max]="1000" buttonLayout="horizontal"
+                            decrementButtonClass="p-button-info" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" incrementButtonClass="p-button-info"
+                            incrementButtonIcon="pi pi-plus" placeholder="15 DT" decrementButtonIcon="pi pi-minus"
+                            class="inputPassenger" mode="currency" inputId="currency-tunisia" currency="TND"
+                            formControlName="price" locale="fr-TN"> </p-inputNumber>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <h4 class="subTitle">Description</h4>
+                    </div>
+
+                    <div class="card flex justify-content-center">
+                        <textarea [rows]="5" class="inputs" [cols]="30" pInputTextarea [maxLength]="300"
+                            formControlName="description" [autoResize]="true"></textarea>
+                    </div>
+
+                    <div style="margin-top: 2vh;" class="card flex justify-content-center">
+                        <h2 class="highway">
+                          Autoroute</h2><p-inputSwitch formControlName="highway"
+                            aria-checked="true"></p-inputSwitch>
+                    </div>
+
+                    <div class="card button flex justify-content-center">
+                        <p-button label="Publier un Trajet" type="submit"><mat-icon
+                                class="icons">directions_car</mat-icon></p-button>
+
+                    </div>
+                </form>
+            </p-card>
+        </div>
+    </div>
+</body>

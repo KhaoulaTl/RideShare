@@ -1,0 +1,41 @@
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <span class="title"><a class="homeButton" [routerLink]="['/']">CovoiT</a></span>
+    <span class="example-spacer"></span>
+    <span class="menuItem menuContainer"><a class="menuAction" [routerLink]="['/trips']"><mat-icon
+          class="menuIcons">directions_car</mat-icon>Trajet</a></span>
+    <span class="menuItem menuContainer"><a class="menuAction" [routerLink]="['/publish']"><mat-icon
+          class="menuIcons">add_circle_outline</mat-icon>Publier Trajet</a></span>
+
+    <ng-container *ngIf="isLoggedIn(); else loginSignup">
+      <p-avatar [matMenuTriggerFor]="menu" class="avatarContainer" alt="Logo" aria-haspopup="true"
+        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="large"
+        shape="circle"></p-avatar>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/profile']">
+          <mat-icon>person_pin</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Déconnexion</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+    <ng-template #loginSignup>
+      <p-avatar [matMenuTriggerFor]="menu" class="avatarContainer" alt="Logo" aria-haspopup="true"
+        image="assets/avatar.png" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/login']">
+          <mat-icon>person_pin</mat-icon>
+          <span>S'identifier</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/register']">
+          <mat-icon>control_point</mat-icon>
+          <span>S'inscrire</span>
+        </button>
+      </mat-menu>
+    </ng-template>
+
+  </mat-toolbar-row>
+</mat-toolbar>

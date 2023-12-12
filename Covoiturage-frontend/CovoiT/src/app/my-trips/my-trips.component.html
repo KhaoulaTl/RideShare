@@ -1,0 +1,55 @@
+<app-navbar-component></app-navbar-component>
+
+<body>
+    <div class="cardsContainer">
+        <p-card [style]="{background: '#fafafa', 'border-radius': '2em'}" header="My reservations">
+            <div *ngFor="let trip of trips">
+                <a [routerLink]="['/trip', trip._id]" style="text-decoration: none; margin-bottom: 5vh;">
+                    <p-card [style]="{ width: '100%'}" header="{{ trip.departure}} - {{trip.arrival}}"
+                        subheader="{{ trip.date }}">
+                        <p>{{ trip.description }}</p>
+                        <p class="information">Nombre de place réservée : {{ trip.seats }}</p>
+                        <p class="information">Prix : {{ trip.price }} TND</p>
+                        <p class="information">Conducteur : {{ trip.driver }}</p>
+                        <div class="information passengers">
+                            <p>Passagers : </p>
+                            <div class="card">
+                                <p-avatarGroup styleClass="mb-3">
+                                    <p-avatar *ngFor="let passenger of trip?.passengers" [image]="passenger.photo"
+                                        size="large" shape="circle"></p-avatar>
+                                </p-avatarGroup>
+                            </div>
+                        </div>
+                    </p-card>
+                </a>
+            </div>
+        </p-card>
+
+        <div class="pastTripsContainer">
+            <mat-expansion-panel hideToggle [style]="{background: '#fafafa'}">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="cardTitle">
+                      Voyages passés
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Vous pouvez voir vos voyages passés ici en tant que Passager ou Conducteur.
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div *ngFor="let trip of pastTrips">
+                    <p-card [style]="{ width: '100%', 'margin-bottom': '5vh'}" style="margin-top: 5vh;"
+                        header="{{ trip.departure}} - {{trip.arrival}}" subheader="{{ trip.date }}">
+                        <p>{{ trip.description }}</p>
+                        <p class="information">Nombre de place réservée  : {{ trip.seats }}</p>
+                        <p class="information">Prix : {{ trip.price }} TND</p>
+                        <p class="information">Conducteur : {{ trip.driver }}</p>
+                    </p-card>
+                </div>
+
+            </mat-expansion-panel>
+        </div>
+    </div>
+</body>
+
+<app-footer></app-footer>
