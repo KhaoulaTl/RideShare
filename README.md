@@ -5,19 +5,29 @@ Le projet RideShare est une plateforme de covoiturage visant à simplifier le pr
 
 
 # Fonctionnalités Principales
-#### * Publication de Covoiturages : 
+
+ * Publication de Covoiturages :
+   
 Les conducteurs peuvent publier des détails sur leurs trajets planifiés, y compris les lieux de départ et d'arrivée, la date, le nombre de places disponibles, et d'autres informations pertinentes.
 
-#### * Recherche de Covoiturages : 
+
+* Recherche de Covoiturages :
+  
 Les passagers peuvent rechercher des covoiturages disponibles en spécifiant leur lieu de départ, leur destination et d'autres critères pertinents ( Date et Heure ) .
 
-#### * Réservation de Places : 
+
+ * Réservation de Places :
+   
 Les passagers peuvent réserver des places dans les covoiturages disponibles, et les conducteurs peuvent accepter ou rejeter ces réservations.
 
-#### * Gestion des Covoiturages : 
+
+ * Gestion des Covoiturages :
+   
 Les conducteurs peuvent gérer leurs covoiturages publiés, voir les réservations en attente, accepter ou rejeter des passagers, et mettre à jour les détails du covoiturage.
 
-#### * Système d'Authentification : 
+
+ * Système d'Authentification :
+    
 Une authentification sécurisée est mise en place pour garantir que seuls les utilisateurs enregistrés peuvent publier ou réserver des covoiturages.
 
 *************************************************************************************************************************
